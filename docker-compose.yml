@@ -1,0 +1,6 @@
+services:
+  app:
+    image: web-apps
+    container_name: web-apps
+    ports:
+      - "1234:8080"
