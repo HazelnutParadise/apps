@@ -15,10 +15,10 @@ RUN go mod tidy
 RUN go build -o main .
 
 FROM scratch
-COPY --from=builder /app/main /app/main
-COPY --from=builder /app/apps_index/dist /app/apps_index/dist
+COPY --from=builder /app/main /main
+COPY --from=builder /app/apps_index/dist /apps_index/dist
 COPY --from=builder /app/guess-the-weather /guess-the-weather
 COPY --from=builder /app/mail /mail
 COPY --from=builder /app/TSPP-plus /TSPP-plus
 
-ENTRYPOINT ["/app/main"]
+CMD [ "/main" ]
