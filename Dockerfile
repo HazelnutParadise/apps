@@ -1,4 +1,4 @@
-FROM golang:1.23-alpine
+FROM golang:1.23-alpine AS builder
 
 # 安裝 nodejs 和 vite
 RUN apk add --no-cache nodejs npm
@@ -14,5 +14,12 @@ RUN cd apps_index && vite build
 RUN cd ../
 RUN go mod tidy
 RUN go build -o main .
+
+FROM scratch
+COPY --from=builder /app/main /app/main
+COPY --from=builder /app/apps_index/dist /app/apps_index/dist
+COPY --from=builder /guess-the-weather /guess-the-weather
+COPY --from=builder /mail /mail
+COPY --from=builder /TSPP-plus /TSPP-plus
 
 ENTRYPOINT ["/app/main"]
