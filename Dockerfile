@@ -11,7 +11,6 @@ COPY . .
 RUN cd apps_index && npm install
 RUN cd apps_index && vite build
 
-RUN cd ../
 RUN go mod tidy
 RUN go build -o main .
 
