@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://src.hazelnut-paradise.com/HazelnutParadise-icon.ico" type="image/x-icon">
+  <title>天氣猜猜猜</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="startButtonContainer">
+    <div class="background-animation">
+      <div class="sun"></div>
+    </div>
+    
+    <h1>天氣猜猜猜</h1>
+    <button id="startGameButton">開始遊戲</button>
+  </div>
+
+
+
+  <div class="container" style="display: none;" id="gameDashboard">
+    <header class="header">
+      <h1>天氣猜猜猜</h1>
+      <!-- Your game dashboard HTML here -->
+      <div class="high-score">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+          <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+          <path d="M4 22h16"></path>
+          <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+          <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+          <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+        </svg>
+        <span>歷史最高分：</span>
+        <span id="highest-score">暫不支援😅</span>
+      </div>
+    </header>
+    <main>
+      <div class="card time-left">
+        <h3>剩餘時間</h3>
+        <div><span id="now-time-left">--</span><span id="s"> 秒</span></div>
+      </div>
+      <div class="card current-score">
+        <h3>目前得分</h3>
+        <div id="current-score">512</div>
+      </div>
+      <div class="card location">
+        <h3>城市</h3>
+        <div><span id="city">City</span>, <span id="country">Country</span></div>
+      </div>
+    </main>
+    <footer>
+      <button class="weather sunny" id="sunny">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="w-6 h-6 text-yellow-500">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2"></path>
+          <path d="M12 20v2"></path>
+          <path d="m4.93 4.93 1.41 1.41"></path>
+          <path d="m17.66 17.66 1.41 1.41"></path>
+          <path d="M2 12h2"></path>
+          <path d="M20 12h2"></path>
+          <path d="m6.34 17.66-1.41 1.41"></path>
+          <path d="m19.07 4.93-1.41 1.41"></path>
+        </svg>
+        <p>晴朗</p>
+      </button>
+      <button class="weather cloudy" id="cloudy">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="w-6 h-6 text-gray-300">
+          <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+        </svg>
+        <p>多雲</p>
+      </button>
+      <button class="weather rainy" id="rainy">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="w-6 h-6 text-gray-300">
+          <path d="M22 12a10.06 10.06 1 0 0-20 0Z"></path>
+          <path d="M12 12v8a2 2 0 0 0 4 0"></path>
+          <path d="M12 2v1"></path>
+        </svg>
+        <p>下雨</p>
+      </button>
+      <button class="weather snowy" id="snowy">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="w-6 h-6 text-blue-500">
+          <line x1="2" x2="22" y1="12" y2="12"></line>
+          <line x1="12" x2="12" y1="2" y2="22"></line>
+          <path d="m20 16-4-4 4-4"></path>
+          <path d="m4 8 4 4-4 4"></path>
+          <path d="m16 4-4 4-4-4"></path>
+          <path d="m8 20 4-4 4 4"></path>
+        </svg>
+        <p>下雪</p>
+      </button>
+    </footer>
+  </div>
+
+  <div id="game-over">
+    <h1>Game Over!</h1>
+    <h2>您的成績為：</h2><span id="final-score"></span>
+    <button id="startAgainButton">再玩一次</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="卡通信封圖.ico">
+    <title>網站信箱 - 榛果繽紛樂</title>
+
+    <style>
+        html {
+            overflow-x: hidden;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 0px;
+            margin: 0px;
+            width: 100%;
+            overflow-x: hidden;
+            background-color: #D7FFF1;
+        }
+
+        h1{
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            margin-bottom: 0px;
+            font-size: 50px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #ffc107; /* Yellow */
+            color: black;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e0a800;
+        }
+
+        .honeypot {
+            display: none;
+            visibility: hidden;
+            position: absolute;
+            left: -5000px;
+        }
+
+        button:disabled {
+        background-color: #cccccc;
+        color: #666666;
+        cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+    <script>
+        fetch('https://hazelnut-paradise.com/navBar', {
+                method: "GET"
+            })
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('navbar-placeholder').innerHTML = html;
+            })
+            .catch(error => {
+                console.error('Error loading navbar:', error);
+            });
+    </script>
+    <h1>網站信箱</h1>
+    <div style="padding: 40px 60px;font-family: Arial, sans-serif;">
+        <form id="contact-form" action="https://server.hazelnut-paradise.com/SendEmail" method="post">
+            <div class="form-group">
+                <label for="name">名字：</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">您的email：</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="subject">主旨：</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+            <div class="form-group">
+                <label for="message">內容：</label>
+                <textarea id="message" name="message" rows="15" required></textarea>
+            </div>
+            <div class="honeypot">
+                <label for="honeyPotField">Don't fill this out if you're human:</label>
+                <input type="text" id="honeyPotField" name="honey_pot_field" autocomplete="off">
+            </div>
+            <button type="submit">提交</button>
+        </form>
+        
+        <script>
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault(); // 阻止表单的默认提交行为
+        
+                if (document.getElementById('honeyPotField').value !== '') {
+                    // 如果隐藏字段被填写，阻止表单提交
+                    alert('Spam detected!');
+                    return;
+                }
+        
+                // 禁用提交按钮
+                var submitButton = document.querySelector('button[type="submit"]');
+                submitButton.disabled = true;
+        
+                var formData = new FormData(document.getElementById('contact-form'));
+                var content = {};
+                formData.forEach(function(value, key){
+                    if(key != "honey_pot_field") {
+                        content[key] = value;
+                    }
+                });
+                
+                fetch('https://server.hazelnut-paradise.com/SendEmail', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ content: content, type: "網站信箱", recipient: "" })
+                })
+                .then(response => response.text())
+                .then(data => {
+                    alert(data); // 显示从服务器返回的消息
+                    clearForm(); // 清空表单
+                    submitButton.disabled = false; // 重新启用提交按钮
+                })
+                .catch(error => {
+                    alert('提交出錯，請稍後再試！'); // 错误处理
+                    submitButton.disabled = false; // 重新启用提交按钮
+                });
+            });
+        
+            function clearForm() {
+                document.getElementById('contact-form').reset();
+            }
+        </script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="https://src.hazelnut-paradise.com/HazelnutParadise-icon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Apps - 榛果繽紛樂</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.js"></script>
+  <footer>
+    <div id="div-onead-draft"></div>
+    <script type="text/javascript">
+      var custom_call = function (params) {
+        if (params.hasAd) {
+          console.log('TD has AD')
+        } else {
+          console.log('TD AD Empty')
+        }
+      }
+      ONEAD_TEXT = {};
+      ONEAD_TEXT.pub = {};
+      ONEAD_TEXT.pub.uid = "2000181";
+      ONEAD_TEXT.pub.slotobj = document.getElementById("div-onead-draft");
+      ONEAD_TEXT.pub.player_mode = "text-drive";
+      ONEAD_TEXT.pub.queryAdCallback = custom_call;
+      window.ONEAD_text_pubs = window.ONEAD_text_pubs || [];
+      ONEAD_text_pubs.push(ONEAD_TEXT);
+    </script>
+    <script src="https://ad-specs.guoshipartners.com/static/js/ad-serv.min.js"></script>
+
+  </footer>
+</body>
+
+</html>
