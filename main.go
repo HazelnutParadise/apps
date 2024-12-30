@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -17,10 +15,7 @@ func main() {
 	r.Static("/mail", "mail")
 	r.Static("/guess-the-weather", "guess-the-weather")
 	r.StaticFile("/", "apps_index/dist/index.html")
-	r.GET("/assets/:filename", func(c *gin.Context) {
-		filename := c.Param("filename")
-		fmt.Print(filename)
-		c.File("apps_index/dist/assets/" + filename)
-	})
+	r.Static("/assets", "apps_index/dist/assets")
+
 	r.Run(":8080")
 }
