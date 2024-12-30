@@ -1,14 +1,15 @@
 FROM golang:1.23-alpine
 
-# 安裝 nodejs vite
+# 安裝 nodejs 和 vite
 RUN apk add --no-cache nodejs npm
-RUN npm install -g create-vite
+RUN npm install -g vite
 
 WORKDIR /app
 COPY . .
 
-RUN cd /apps_index
-RUN vite build
+# 安裝 apps_index 目錄中的依賴
+RUN cd apps_index && npm install
+RUN cd apps_index && vite build
 
 RUN cd ../
 RUN go mod tidy
