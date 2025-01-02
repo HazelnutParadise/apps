@@ -4,3 +4,4 @@ services:
     container_name: web-apps
     ports:
       - "1235:8080"
+    restart: always
