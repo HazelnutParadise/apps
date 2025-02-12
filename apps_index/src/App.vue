@@ -35,6 +35,7 @@ const tsppPlusImage = ref('https://src.hazelnut-paradise.com/TSPPplus-logo.png')
 const accountCenterImage = ref('https://src.hazelnut-paradise.com/AccountCenter-logo.png');
 const ItemGlowImage = ref('https://src.hazelnut-paradise.com/ItemGlow-logo.png');
 const dbPlaygroundImage = ref('https://src.hazelnut-paradise.com/dbPlayground-logo.png');
+const gmapsReviewsImage = ref('https://src.hazelnut-paradise.com/GooMapReviewSnatcher.png');
 const mailImage = ref('https://src.hazelnut-paradise.com/mail-logo.png');
 const siteImage = ref('https://src.hazelnut-paradise.com/HazelnutParadise-logo.png');
 const AdminyXImage = ref('https://src.hazelnut-paradise.com/AdminyX-logo.png');
@@ -48,13 +49,6 @@ export default {
     return {
       apps: [
         {
-          id: "tsppPlus",
-          title: "TSPP+ 台股預言家",
-          description: "使用先進AI科技預測股價",
-          imgSrc: tsppPlusImage,
-          url: "/tspp-plus",
-        },
-        {
           id: "dbPlayground",
           title: "DB Playground",
           description: "SQL練習神器",
@@ -67,6 +61,13 @@ export default {
           description: "專為電商賣家打造的商品照自動優化器",
           imgSrc: ItemGlowImage,
           url: "https://itemglow.hazelnut-paradise.com",
+        },
+        {
+          id: "gmapsReviews",
+          title: "估咩評論小扒手🫳",
+          description: "輕鬆爬取 Google Maps 商家評論",
+          imgSrc: gmapsReviewsImage,
+          url: "https://gmaps-reviews.hazelnut-paradise.com/",
         },
         {
           id: "accountCenter",
@@ -88,6 +89,13 @@ export default {
           description: "小遊戲",
           imgSrc: siteImage,
           url: "/guess-the-weather",
+        },
+        {
+          id: "tsppPlus",
+          title: "TSPP+ 台股預言家",
+          description: "使用先進AI科技預測股價",
+          imgSrc: tsppPlusImage,
+          url: "/tspp-plus",
         },
         {
           id: "AdminyX",
