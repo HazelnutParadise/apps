@@ -16,7 +16,7 @@ func main() {
 	apiGp := r.Group("/api")
 	{
 		apiGp.GET("/send-email", func(c *gin.Context) {
-			http.Post("/SendEmail", "application/json", c.Request.Body)
+			http.Post("http://sendemail/SendEmail", "application/json", c.Request.Body)
 			c.JSON(http.StatusOK, gin.H{"status": "email sent"})
 		})
 	}
