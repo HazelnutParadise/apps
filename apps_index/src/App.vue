@@ -77,13 +77,6 @@ const apps = ref([
   //   url: "https://hazelnut-paradise.com/account",
   // },
   {
-    id: "mail",
-    title: "網站信箱",
-    description: "聯繫我們",
-    imgSrc: mailImage,
-    url: "/mail",
-  },
-  {
     id: "home",
     title: "回首頁",
     description: "回到 榛果繽紛樂 首頁",

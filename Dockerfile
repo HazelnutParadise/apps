@@ -18,6 +18,5 @@ RUN go build -o main .
 FROM scratch
 COPY --from=gin-builder /app/main /main
 COPY --from=bun-builder /app/apps_index/dist /apps_index/dist
-COPY ./mail /mail
 
 CMD [ "/main" ]
