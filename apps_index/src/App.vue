@@ -26,107 +26,73 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import NavBar from "./components/Navbar.vue";
-
-// 外部圖片使用 ref
 import { ref } from 'vue';
-const tsppPlusImage = ref('https://src.hazelnut-paradise.com/TSPPplus-logo.png');
-const accountCenterImage = ref('https://src.hazelnut-paradise.com/AccountCenter-logo.png');
-const ItemGlowImage = ref('https://src.hazelnut-paradise.com/ItemGlow-logo.png');
-const dbPlaygroundImage = ref('https://src.hazelnut-paradise.com/dbPlayground-logo.png');
-const gmapsReviewsImage = ref('https://src.hazelnut-paradise.com/GooMapReviewSnatcher.png');
-const mailImage = ref('https://src.hazelnut-paradise.com/mail-logo.png');
-const siteImage = ref('https://src.hazelnut-paradise.com/HazelnutParadise-logo.png');
-const AdminyXImage = ref('https://src.hazelnut-paradise.com/AdminyX-logo.png');
-const storeCoachImage = ref('https://src.hazelnut-paradise.com/StoreCoach-logo.png');
 
-export default {
-  name: "AppDirectory",
-  components: {
-    NavBar,
+// 圖片 URLs
+const accountCenterImage = 'https://src.hazelnut-paradise.com/AccountCenter-logo.png';
+const ItemGlowImage = 'https://src.hazelnut-paradise.com/ItemGlow-logo.png';
+const dbPlaygroundImage = 'https://src.hazelnut-paradise.com/dbPlayground-logo.png';
+const gmapsReviewsImage = 'https://src.hazelnut-paradise.com/GooMapReviewSnatcher.png';
+const mailImage = 'https://src.hazelnut-paradise.com/mail-logo.png';
+const siteImage = 'https://src.hazelnut-paradise.com/HazelnutParadise-logo.png';
+const storeCoachImage = 'https://src.hazelnut-paradise.com/StoreCoach-logo.png';
+
+// 應用程式列表
+const apps = ref([
+  {
+    id: "dbPlayground",
+    title: "DB Playground",
+    description: "SQL練習神器",
+    imgSrc: dbPlaygroundImage,
+    url: "https://db-playground.hazelnut-paradise.com",
   },
-  data() {
-    return {
-      apps: [
-        {
-          id: "dbPlayground",
-          title: "DB Playground",
-          description: "SQL練習神器",
-          imgSrc: dbPlaygroundImage,
-          url: "https://db-playground.hazelnut-paradise.com",
-        },
-        {
-          id: "itemGlow",
-          title: "ItemGlow",
-          description: "專為電商賣家打造的商品照自動優化器",
-          imgSrc: ItemGlowImage,
-          url: "https://itemglow.hazelnut-paradise.com",
-        },
-        {
-          id: "gmapsReviews",
-          title: "估咩評論小扒手🫳",
-          description: "輕鬆爬取 Google Maps 商家評論",
-          imgSrc: gmapsReviewsImage,
-          url: "https://gmaps-reviews.hazelnut-paradise.com",
-        },
-        {
-          id: "storeCoach",
-          title: "StoreCoach 商店教練",
-          description: "專為店家提供的智慧分析",
-          imgSrc: storeCoachImage,
-          url: "https://storecoach.hazelnut-paradise.com",
-        },
-        {
-          id: "accountCenter",
-          title: "登入/註冊/帳號中心",
-          description: "管理您的帳號",
-          imgSrc: accountCenterImage,
-          url: "https://hazelnut-paradise.com/account",
-        },
-        {
-          id: "mail",
-          title: "網站信箱",
-          description: "聯繫我們",
-          imgSrc: mailImage,
-          url: "/mail",
-        },
-        {
-          id: "guessTheWeather",
-          title: "天氣猜猜猜",
-          description: "小遊戲",
-          imgSrc: siteImage,
-          url: "/guess-the-weather",
-        },
-        // {
-        //   id: "tsppPlus",
-        //   title: "TSPP+ 台股預言家",
-        //   description: "使用先進AI科技預測股價",
-        //   imgSrc: tsppPlusImage,
-        //   url: "/tspp-plus",
-        // },
-        {
-          id: "AdminyX",
-          title: "AdminyX",
-          description: "[管理員專用] 後台管理系統",
-          imgSrc: AdminyXImage,
-          url: "https://admin.hazelnut-paradise.com",
-        },
-        {
-          id: "home",
-          title: "回首頁",
-          description: "回到 榛果繽紛樂 首頁",
-          imgSrc: siteImage,
-          url: "https://www.hazelnut-paradise.com",
-        },
-        // Add other apps here in similar fashion
-      ],
-    };
+  {
+    id: "itemGlow",
+    title: "ItemGlow",
+    description: "專為電商賣家打造的商品照自動優化器",
+    imgSrc: ItemGlowImage,
+    url: "https://itemglow.hazelnut-paradise.com",
   },
-};
+  {
+    id: "gmapsReviews",
+    title: "估咩評論小扒手🫳",
+    description: "輕鬆爬取 Google Maps 商家評論",
+    imgSrc: gmapsReviewsImage,
+    url: "https://gmaps-reviews.hazelnut-paradise.com",
+  },
+  {
+    id: "storeCoach",
+    title: "StoreCoach 商店教練",
+    description: "專為店家提供的智慧分析",
+    imgSrc: storeCoachImage,
+    url: "https://storecoach.hazelnut-paradise.com",
+  },
+  // {
+  //   id: "accountCenter",
+  //   title: "登入/註冊/帳號中心",
+  //   description: "管理您的帳號",
+  //   imgSrc: accountCenterImage,
+  //   url: "https://hazelnut-paradise.com/account",
+  // },
+  {
+    id: "mail",
+    title: "網站信箱",
+    description: "聯繫我們",
+    imgSrc: mailImage,
+    url: "/mail",
+  },
+  {
+    id: "home",
+    title: "回首頁",
+    description: "回到 榛果繽紛樂 首頁",
+    imgSrc: siteImage,
+    url: "https://www.hazelnut-paradise.com",
+  },
+]);
 </script>
 
 <style scoped>
 @import './app.css'
-/* Add your CSS here. Remember to scope your styles if they're specific to this component */
 </style>
