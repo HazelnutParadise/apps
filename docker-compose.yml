@@ -5,3 +5,9 @@ services:
     ports:
       - "127.0.0.1:1235:8080"
     restart: always
+    networks:
+      - sendemail-net
+
+networks:
+  sendemail-net:
+    external: true
