@@ -1,9 +1,4 @@
-FROM golang:1.23-alpine AS builder
-
-# 安裝 bun
-RUN apk add --no-cache curl unzip
-RUN curl -fsSL https://bun.sh/install | bash
-ENV PATH="/root/.bun/bin:$PATH"
+FROM oven/bun:1.2.18 AS bun-builder
 
 WORKDIR /app
 COPY . .
@@ -12,12 +7,17 @@ COPY . .
 RUN cd apps_index && bun install
 RUN cd apps_index && bun run build
 
+FROM golang:1.23-alpine AS gin-builder
+
+WORKDIR /app
+COPY . .
+
 RUN go mod tidy
 RUN go build -o main .
 
 FROM scratch
-COPY --from=builder /app/main /main
-COPY --from=builder /app/apps_index/dist /apps_index/dist
-COPY --from=builder /app/mail /mail
+COPY --from=gin-builder /app/main /main
+COPY --from=bun-builder /app/apps_index/dist /apps_index/dist
+COPY ./mail /mail
 
 CMD [ "/main" ]
