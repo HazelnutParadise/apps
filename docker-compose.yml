@@ -1,6 +1,9 @@
 services:
   app:
     image: web-apps
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: web-apps
     ports:
       - "127.0.0.1:1235:8080"

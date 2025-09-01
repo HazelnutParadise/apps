@@ -38,6 +38,7 @@ const gmapsReviewsImage = 'https://src.hazelnut-paradise.com/GooMapReviewSnatche
 const mailImage = 'https://src.hazelnut-paradise.com/mail-logo.png';
 const siteImage = 'https://src.hazelnut-paradise.com/HazelnutParadise-logo.png';
 const storeCoachImage = 'https://src.hazelnut-paradise.com/StoreCoach-logo.png';
+const linebotrmImage = 'https://src.hazelnut-paradise.com/LineRMManager.png';
 
 // 應用程式列表
 const apps = ref([
@@ -68,6 +69,13 @@ const apps = ref([
     description: "專為店家提供的智慧分析",
     imgSrc: storeCoachImage,
     url: "https://storecoach.hazelnut-paradise.com",
+  },
+  {
+    id: "linebotrm",
+    title: "LINE Bot Rich Menu Manager",
+    description: "輕鬆管理您的 LINE Bot Rich Menu",
+    imgSrc: linebotrmImage,
+    url: "https://linebotrm.hazelnut-paradise.com",
   },
   // {
   //   id: "accountCenter",
