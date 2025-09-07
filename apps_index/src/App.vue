@@ -31,7 +31,7 @@ import NavBar from "./components/Navbar.vue";
 import { ref } from 'vue';
 
 // 圖片 URLs
-const accountCenterImage = 'https://src.hazelnut-paradise.com/AccountCenter-logo.png';
+const accountCenterImage = 'https://src.hazelnut-paradise.com/AccountCenter.png';
 const ItemGlowImage = 'https://src.hazelnut-paradise.com/ItemGlow-logo.png';
 const dbPlaygroundImage = 'https://src.hazelnut-paradise.com/dbPlayground-logo.png';
 const gmapsReviewsImage = 'https://src.hazelnut-paradise.com/GooMapReviewSnatcher.png';
@@ -77,13 +77,13 @@ const apps = ref([
     imgSrc: linebotrmImage,
     url: "https://linebotrm.hazelnut-paradise.com",
   },
-  // {
-  //   id: "accountCenter",
-  //   title: "登入/註冊/帳號中心",
-  //   description: "管理您的帳號",
-  //   imgSrc: accountCenterImage,
-  //   url: "https://hazelnut-paradise.com/account",
-  // },
+  {
+    id: "accountCenter",
+    title: "帳號中心",
+    description: "管理您的帳號",
+    imgSrc: accountCenterImage,
+    url: "https://account.hazelnut-paradise.com",
+  },
   {
     id: "home",
     title: "回首頁",
